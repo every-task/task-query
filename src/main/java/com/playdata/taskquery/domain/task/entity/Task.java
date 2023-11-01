@@ -5,6 +5,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,4 +22,21 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Period period;
     private String content;
+
+    public static Task createTask(UUID id, Long storyId, Period period, String content){
+        return Task.builder()
+                .id(id)
+                .storyId(storyId)
+                .period(period)
+                .content(content)
+                .build();
+    }
+
+    @Builder
+    public Task(UUID id, Long storyId, Period period, String content) {
+        this.id = id;
+        StoryId = storyId;
+        this.period = period;
+        this.content = content;
+    }
 }
