@@ -15,6 +15,6 @@ public class StoryConsumer {
 
     @KafkaListener(topics = TopicConfig.STORY)
     public void listen(StoryKafkaData data){
-        taskService.register(data);
+        taskService.taskRegister(data);
     }
 }
