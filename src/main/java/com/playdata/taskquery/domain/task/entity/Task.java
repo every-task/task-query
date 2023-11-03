@@ -23,6 +23,12 @@ public class Task {
     private Period period;
     private String content;
 
+    public static Task fromId(UUID id){
+        Task task = new Task();
+        task.id = id;
+        return task;
+    }
+
     public static Task createTask(UUID id, Long storyId, Period period, String content){
         return Task.builder()
                 .id(id)
