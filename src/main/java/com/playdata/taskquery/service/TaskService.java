@@ -25,6 +25,13 @@ public class TaskService {
                 .toList();
     }
 
+    public List<TaskResponse> getBySuggestTaskByQuestionId(Long id) {
+        return suggestRepository.findByQuestionId(id).stream()
+                .map(Suggest::getTask)
+                .map(TaskResponse::fromEntity)
+                .toList();
+    }
+
     public void taskRegister(StoryKafkaData data){
         List<Task> tasks = data.tasks().stream()
                 .map(task -> Task.createTask(

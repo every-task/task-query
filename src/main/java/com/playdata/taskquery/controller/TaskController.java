@@ -21,5 +21,10 @@ public class TaskController {
     public List<TaskResponse> getByStoryId(@PathVariable("storyId") Long id){
         return taskService.getByStoryId(id);
     }
+
+    @GetMapping("/question/{questionId}/suggest")
+    public List<TaskResponse> getBySuggestTaskByQuestionId(@PathVariable("questionId") Long id){
+        return taskService.getBySuggestTaskByQuestionId(id);
+    }
 }
 
