@@ -19,13 +19,13 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final SuggestRepository suggestRepository;
 
-    public List<TaskResponse> getByStoryId(Long id) {
+    public List<TaskResponse> getTasksByStoryId(Long id){
         return taskRepository.findByStoryId(id).stream()
                 .map(TaskResponse::fromEntity)
                 .toList();
     }
 
-    public List<TaskResponse> getBySuggestTaskByQuestionId(Long id) {
+    public List<TaskResponse> getSuggestTasksByQuestionId(Long id){
         return suggestRepository.findByQuestionIdFetchTask(id).stream()
                 .map(Suggest::getTask)
                 .map(TaskResponse::fromEntity)
