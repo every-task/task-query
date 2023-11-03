@@ -26,7 +26,7 @@ public class TaskService {
     }
 
     public List<TaskResponse> getBySuggestTaskByQuestionId(Long id) {
-        return suggestRepository.findByQuestionId(id).stream()
+        return suggestRepository.findByQuestionIdFetchTask(id).stream()
                 .map(Suggest::getTask)
                 .map(TaskResponse::fromEntity)
                 .toList();
