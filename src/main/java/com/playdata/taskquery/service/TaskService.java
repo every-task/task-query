@@ -4,21 +4,33 @@ import com.playdata.taskquery.domain.suggest.entity.Suggest;
 import com.playdata.taskquery.domain.suggest.repository.SuggestRepository;
 import com.playdata.taskquery.domain.task.entity.Task;
 import com.playdata.taskquery.domain.task.repository.TaskRepository;
+import com.playdata.taskquery.domain.task.response.TaskResponse;
 import com.playdata.taskquery.kafka.data.StoryKafkaData;
 import com.playdata.taskquery.kafka.data.SuggestKafkaData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class TaskService {
 
     private final TaskRepository taskRepository;
     private final SuggestRepository suggestRepository;
+
+    public List<TaskResponse> getTasksByStoryId(Long id){
+        return taskRepository.findByStoryId(id).stream()
+                .map(TaskResponse::fromEntity)
+                .toList();
+    }
+
+    public List<TaskResponse> getSuggestTasksByQuestionId(Long id){
+        return suggestRepository.findByQuestionIdFetchTask(id).stream()
+                .map(Suggest::getTask)
+                .map(TaskResponse::fromEntity)
+                .toList();
+    }
 
     public void taskRegister(StoryKafkaData data){
         List<Task> tasks = data.tasks().stream()
