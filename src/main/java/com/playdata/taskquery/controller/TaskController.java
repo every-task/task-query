@@ -17,14 +17,14 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping("/story/{storyId}")
-    public List<TaskResponse> getByStoryId(@PathVariable("storyId") Long id){
-        return taskService.getByStoryId(id);
+    @GetMapping("/stories/{storyId}/tasks")
+    public List<TaskResponse> getTasksByStoryId(@PathVariable("storyId") Long id){
+        return taskService.getTasksByStoryId(id);
     }
 
-    @GetMapping("/question/{questionId}/suggest")
-    public List<TaskResponse> getBySuggestTaskByQuestionId(@PathVariable("questionId") Long id){
-        return taskService.getBySuggestTaskByQuestionId(id);
+    @GetMapping("/suggest/questions/{questionId}/tasks")
+    public List<TaskResponse> getSuggestTasksByQuestionId(@PathVariable("questionId") Long id){
+        return taskService.getSuggestTasksByQuestionId(id);
     }
 }
 
