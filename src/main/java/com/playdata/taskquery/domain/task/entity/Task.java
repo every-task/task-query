@@ -41,7 +41,7 @@ public class Task {
     @Builder
     public Task(UUID id, Long storyId, Period period, String content) {
         this.id = id;
-        StoryId = storyId;
+        this.StoryId = storyId;
         this.period = period;
         this.content = content;
     }
