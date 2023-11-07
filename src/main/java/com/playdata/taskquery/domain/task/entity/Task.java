@@ -18,7 +18,7 @@ public class Task {
 
     @Id
     private UUID id;
-    private Long StoryId;
+    private Long storyId;
     @Enumerated(EnumType.STRING)
     private Period period;
     private String content;
@@ -41,7 +41,7 @@ public class Task {
     @Builder
     public Task(UUID id, Long storyId, Period period, String content) {
         this.id = id;
-        this.StoryId = storyId;
+        this.storyId = storyId;
         this.period = period;
         this.content = content;
     }
