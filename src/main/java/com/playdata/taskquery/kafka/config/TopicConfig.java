@@ -10,6 +10,7 @@ public class TopicConfig {
 
     public static final String STORY = "story";
     public static final String SUGGEST = "suggest";
+    public static final String TASK = "task";
 
     // local 개발용 토픽, 운영환경은 task service 에서 토픽 생성 X
     @Bean

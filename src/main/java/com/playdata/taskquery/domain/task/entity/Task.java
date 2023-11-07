@@ -23,6 +23,11 @@ public class Task {
     private Period period;
     private String content;
 
+    public void edit(Period period, String content){
+        this.period = period;
+        this.content = content;
+    }
+
     public static Task fromId(UUID id){
         Task task = new Task();
         task.id = id;
