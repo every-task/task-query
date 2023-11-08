@@ -10,3 +10,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    consumer:
+      group-id: test
+    properties:
+      auto.create.topics.enable: true
