@@ -29,9 +29,6 @@ jobs:
         
     - name: Permission
       run: chmod 744 gradlew
-
-    - name: test 
-      run: ./gradlew test -i
       
     - name: Build Spring
       run: ./gradlew clean build
