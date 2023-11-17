@@ -46,4 +46,4 @@ jobs:
           host: ${{secrets.HOST_IP}}
           username: ${{secrets.HOST_USERNAME}}
           key: ${{secrets.HOST_KEY}}
-          script: kubectl rollout restart deploy task-management -n myapp
+          script: kubectl rollout restart deploy task-query -n myapp
