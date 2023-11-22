@@ -3,10 +3,7 @@ package com.playdata.taskquery.controller;
 import com.playdata.taskquery.domain.task.response.TaskResponse;
 import com.playdata.taskquery.service.TaskService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,13 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService taskService;
+
+    @GetMapping("/random")
+    public List<TaskResponse> getRandomTasksBySize(
+            @RequestParam(value = "size", required = false, defaultValue = "10") int size
+    ){
+        return taskService.getRandomTasksBySize(size);
+    }
 
     @GetMapping("/stories/{storyId}/tasks")
     public List<TaskResponse> getTasksByStoryId(@PathVariable("storyId") Long id){
