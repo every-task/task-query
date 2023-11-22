@@ -11,4 +11,7 @@ public interface TaskRepository extends JpaRepository<Task, UUID> {
 
     @Query("select t from Task t where t.storyId = :storyId")
     List<Task> findByStoryId(Long storyId);
+
+    @Query(value = "select * from task order by rand() limit :size", nativeQuery = true)
+    List<Task> findRandomTasksByCount(int size);
 }
